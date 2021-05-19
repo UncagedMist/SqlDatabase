@@ -22,8 +22,8 @@ public class ResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_result);
 
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(Common.CurrentProductName);
+//        ActionBar actionBar = getSupportActionBar();
+//        actionBar.setTitle(Common.CurrentProductName);
 
         webView  = findViewById(R.id.webResult);
         webView.setWebViewClient(new MyWebViewClient());

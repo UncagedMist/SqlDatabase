@@ -28,8 +28,8 @@ public class ProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(Common.CurrentStateName);
+//        ActionBar actionBar = getSupportActionBar();
+//        actionBar.setTitle(Common.CurrentStateName);
 
         recyclerView = findViewById(R.id.recycler_products);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

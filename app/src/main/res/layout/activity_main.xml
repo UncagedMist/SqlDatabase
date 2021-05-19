@@ -10,6 +10,14 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/recycler_states"/>
+        android:id="@+id/recycler_states"
+        android:layout_above="@id/btnNight"/>
+
+    <Button
+        android:text="Night Mode"
+        android:id="@+id/btnNight"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 </RelativeLayout>

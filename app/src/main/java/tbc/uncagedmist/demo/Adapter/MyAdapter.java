@@ -19,6 +19,7 @@ import java.util.ArrayList;
 
 import tbc.uncagedmist.demo.Common.Common;
 import tbc.uncagedmist.demo.Interface.ItemSelectListener;
+import tbc.uncagedmist.demo.MainActivity;
 import tbc.uncagedmist.demo.Model.State;
 import tbc.uncagedmist.demo.ProductActivity;
 import tbc.uncagedmist.demo.R;
@@ -28,6 +29,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     ArrayList<State> states;
     Context context;
 
+//    private static final int item_data = 0;
+//    private static final int item_banner = 1;
+
     public MyAdapter(ArrayList<State> states, Context context) {
         this.states = states;
         this.context = context;
@@ -35,15 +39,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context)
-                .inflate(R.layout.item_layout, parent,false);
+    public MyAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(
+                R.layout.item_layout, parent,false);
+
         return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull MyAdapter.MyViewHolder holder, int position) {
         Picasso.get()
                 .load(states.get(position).getStateImage())
                 .into(holder.stateImage);
@@ -61,12 +65,48 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         });
     }
 
+//    @Override
+//    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+//        int viwtype= getItemViewType(position);
+//
+//
+//
+////        switch (viwtype)
+////        {
+////            case item_data:
+////
+////                break;
+////
+////            case item_banner:
+////            default:
+////                banneraddviewholder bvh=(banneraddviewholder) holder;
+////                AdView adView =(AdView) recycleritems.get(position);
+////
+////                ViewGroup adcardview= (ViewGroup) bvh.itemView;
+////
+////                if(adcardview.getChildCount()>0)
+////                    adcardview.removeAllViews();
+////                if(adcardview.getParent()!=null)
+////                    ((ViewGroup)adView.getParent()).removeView(adView);
+////
+////                adcardview.addView(adView);
+////        }
+//    }
+
+//    @Override
+//    public int getItemViewType(int position) {
+////        if(position % MainActivity.ITEM_PER_AD == 0)
+////            return item_banner;
+////        else
+////            return item_data;
+//    }
+
     @Override
     public int getItemCount() {
         return states.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView stateName;
         ImageView stateImage;
@@ -91,6 +131,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         @Override
         public void onClick(View view) {
             itemSelectListener.onItemSelected(view,getAdapterPosition());
+        }
+    }
+
+    public static class bannerViewHolder extends RecyclerView.ViewHolder
+    {
+        public bannerViewHolder(@NonNull View itemView) {
+            super(itemView);
         }
     }
 }
